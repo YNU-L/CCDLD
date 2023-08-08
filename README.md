@@ -11,7 +11,6 @@ This is the code implementation of paper "Collaborative Coarse-to-fine Disease L
 - GPU memory ≥ 10GB
 - RAM ≥ 32GB
 - SSD capacity ≥ 30GB
-123
 
 ## Packages
 
