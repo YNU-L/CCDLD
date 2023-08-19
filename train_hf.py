@@ -6,7 +6,7 @@ import tensorflow as tf
 from tensorflow.keras.callbacks import LearningRateScheduler
 import numpy as np
 
-from models.model import CODILED
+from models.model import CCDLD
 from metrics import EvaluateHFCallBack
 from utils import DataGenerator
 
@@ -114,9 +114,9 @@ if __name__ == '__main__':
     lr_scheduler = LearningRateScheduler(lr_schedule_fn)
     test_callback = EvaluateHFCallBack(test_codes_gen, test_hf_y)
 
-    codiled_model = CODILED(config, hyper_params)
-    codiled_model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=[tf.metrics.AUC()])
-    codiled_model.fit(x={
+    ccdld_model = CCDLD(config, hyper_params)
+    ccdld_model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=[tf.metrics.AUC()])
+    ccdld_model.fit(x={
         'visit_codes': train_codes_x,
         'visit_lens': train_visit_lens,
         'word_ids': train_note_x,
@@ -134,4 +134,4 @@ if __name__ == '__main__':
         'patient_age': valid_patient_age,
         'patient_cluster': valid_patient_cluster
     }, valid_hf_y.astype(float)), epochs=8, batch_size=32, callbacks=[lr_scheduler, test_callback])
-    codiled_model.summary()
+    ccdld_model.summary()

@@ -8,8 +8,8 @@ from models.layers import HierarchicalEmbedding, PatientEmbedding, WordEmbedding
 from models.layers import VisitEmbedding, TemporalEmbedding, NoteEmbedding
 
 
-class CODILEDFeatureExtractor(Layer):
-    def __init__(self, config, hyper_params, name='codiled_feature'):
+class CCDLDFeatureExtractor(Layer):
+    def __init__(self, config, hyper_params, name='ccdld_feature'):
         super().__init__(name=name)
         self.config = config
         self.num = 0
@@ -112,13 +112,13 @@ class Classifier(Layer):
         return output
 
 
-class CODILED(Model):
-    def __init__(self, config, hyper_params, name='codiled'):
+class CCDLD(Model):
+    def __init__(self, config, hyper_params, name='ccdld'):
         super().__init__(name=name)
-        self.codiled_feature_extractor = CODILEDFeatureExtractor(config, hyper_params)
+        self.ccdld_feature_extractor = CCDLDFeatureExtractor(config, hyper_params)
         self.classifier = Classifier(config['output_dim'], activation=config['activation'], dropout=config['dropout'])
 
     def call(self, inputs, training=True):
-        output = self.codiled_feature_extractor(inputs, training=training)
+        output = self.ccdld_feature_extractor(inputs, training=training)
         output = self.classifier(output)
         return output
