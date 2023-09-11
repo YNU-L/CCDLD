@@ -57,6 +57,7 @@ python run_preprocess4.py
 # Train the model
 
 1. For the medical code prediction task.
+
 For MIMIC-III:
 ```bash
 python train_codes.py
@@ -79,4 +80,4 @@ python train_hf4.py
 
 3. For the top 5 diseases prediction task.
 
-In run_preprocess.py, change disease code '428' to other disease code, and rebuild dataset.
+In run_preprocess.py, change disease code '428' to other disease code, and rebuild the dataset.
