@@ -1,7 +1,7 @@
 # CCDLD
 
 This is the code implementation of paper "Collaborative Coarse-to-fine Disease Learning with Discharge-summary-aware for EHR Event Prediction".
-
+![model](model.png)
 
 # Requirements
 
